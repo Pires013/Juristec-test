@@ -1,0 +1,15 @@
+#### Questão 1
+Você escreveu um script de Web Scraping utilizando *Requests* que parou de funcionar. Você constatou as seguintes questões:
+- A tabela de dados não aparece mais no HTML retornado. Ao abrir o site no seu navegador normalmente, a tabela demora uns 2 segundo para aparecer na tela.
+- Após você tentar rodar o script algumas vezes para testar, o site começou a bloquear suas requisições e retornar o erro 403 para a sua máquina.
+
+Explique, em texto (não é necessário código, apenas a lógica), como você investigaria e resolveria esses dois problemas de forma autônoma. Quais ferramentas, bibliotecas Python 
+ou estratégias você utilizaria para contornar essa situação? Por quê?
+
+R:
+- Começaria investigando se o site carrega os dados via JavaScript. Minha estratégia seria abrir o DevTools (F12)
+e filtrar por Fetch para tentar encontrar a API interna do site e consumi-la direto pelo Requests. 
+Se os dados não estiverem acessíveis via API, eu utilizaria o Selenium para simular o navegador e esperar o carregamento.
+- Agora para o erro 403, provavelmente esse erro ocorreu por uma quantidade muito grande de requisições e acaba retornando esse erro.
+Para solução desse problema, poderiamos adicionar um pequeno delay entre as requicoes com time.sleep() por exemplo, ou poderiamos testar
+via Postman para entender o comportamento da página.
